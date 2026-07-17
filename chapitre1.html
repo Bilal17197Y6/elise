@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Chapitre 1 - La Bibliothèque Oubliée</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<header>
+
+<h1>📚 Chapitre 1</h1>
+
+<p class="subtitle">
+
+La Bibliothèque Oubliée
+
+</p>
+
+</header>
+
+<section class="intro">
+
+<div class="story">
+
+<h2>Le Gardien du Temps</h2>
+
+<p>
+
+Le Gardien du Temps a volé le premier souvenir de votre histoire.
+
+<br><br>
+
+Tu arrives devant une immense bibliothèque.
+
+Des milliers de livres sont rangés sur les étagères.
+
+Une lumière dorée éclaire un vieux livre.
+
+Lorsque tu l'ouvres, une question apparaît...
+
+</p>
+
+</div>
+
+</section>
+
+<section class="progress">
+
+<div class="story">
+
+<h2>Première énigme</h2>
+
+<h3>
+
+Où nous sommes-nous rencontrés ?
+
+</h3>
+
+<br>
+
+<input
+
+type="text"
+
+id="answer"
+
+placeholder="Ta réponse..."
+
+style="width:100%;padding:15px;font-size:18px;border-radius:10px;border:none;">
+
+<br><br>
+
+<button onclick="checkAnswer()">
+
+Valider ✅
+
+</button>
+
+<div id="result" style="margin-top:30px;"></div>
+
+</div>
+
+</section>
+
+<script>
+
+function checkAnswer(){
+
+const answer = document
+.getElementById("answer")
+.value
+.trim()
+.toLowerCase();
+
+const reponses = [
+
+"bibliothèque",
+
+"bibliotheque",
+
+"la bibliothèque",
+
+"la bibliotheque"
+
+];
+
+if(reponses.includes(answer)){
+
+document.getElementById("result").innerHTML = `
+
+<h2 style="color:gold;">
+
+✨ Bravo !
+
+</h2>
+
+<p>
+
+Tu as retrouvé le premier souvenir.
+
+</p>
+
+<br>
+
+<p>
+
+❤️
+
+C'est ici que nos regards se sont croisés pour la première fois.
+
+Ce moment restera gravé pour toujours.
+
+</p>
+
+<br>
+
+<button onclick="nextChapter()">
+
+Continuer ➜
+
+</button>
+
+`;
+
+}else{
+
+document.getElementById("result").innerHTML = `
+
+<p style="color:#ff7070;">
+
+❌ Mauvaise réponse.
+
+<br><br>
+
+Indice :
+
+C'est un endroit rempli de livres. 📚
+
+</p>
+
+`;
+
+}
+
+}
+
+function nextChapter(){
+
+window.location.href = "chapitre2.html";
+
+}
+
+</script>
+
+</body>
+
+</html>

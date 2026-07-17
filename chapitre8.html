@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Chapitre 8 - Les Fragments Perdus</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+#pieces{
+
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:15px;
+margin-top:30px;
+
+}
+
+.piece{
+
+padding:15px 25px;
+
+background:#5b2c83;
+
+border:2px solid gold;
+
+border-radius:10px;
+
+cursor:pointer;
+
+font-size:22px;
+
+transition:.3s;
+
+color:white;
+
+}
+
+.piece:hover{
+
+transform:scale(1.08);
+
+}
+
+#construction{
+
+margin-top:35px;
+
+font-size:35px;
+
+text-align:center;
+
+color:gold;
+
+min-height:50px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<header>
+
+<h1>⭐ Chapitre 8</h1>
+
+<p class="subtitle">
+
+Les Fragments Perdus
+
+</p>
+
+</header>
+
+<section class="intro">
+
+<div class="story">
+
+<h2>La Clé du Destin</h2>
+
+<p>
+
+Tu as retrouvé presque tous les souvenirs.
+
+Il ne reste plus qu'à reconstituer la Clé du Destin.
+
+<br><br>
+
+Clique sur les fragments dans le bon ordre.
+
+</p>
+
+</div>
+
+</section>
+
+<div id="pieces">
+
+<button class="piece" onclick="choose(this,'❤️')">
+❤️
+</button>
+
+<button class="piece" onclick="choose(this,'🔑')">
+🔑
+</button>
+
+<button class="piece" onclick="choose(this,'✨')">
+✨
+</button>
+
+<button class="piece" onclick="choose(this,'💛')">
+💛
+</button>
+
+</div>
+
+<div id="construction"></div>
+
+<div id="result" style="text-align:center;margin-top:40px;"></div>
+
+<script>
+
+const solution = ["🔑","✨","❤️","💛"];
+
+let answer = [];
+
+function choose(button,value){
+
+button.disabled = true;
+
+button.style.opacity = "0.4";
+
+answer.push(value);
+
+document.getElementById("construction").innerHTML = answer.join(" ");
+
+if(answer.length === solution.length){
+
+check();
+
+}
+
+}
+
+function check(){
+
+let ok = true;
+
+for(let i=0;i<solution.length;i++){
+
+if(answer[i] !== solution[i]){
+
+ok = false;
+
+break;
+
+}
+
+}
+
+if(ok){
+
+document.getElementById("result").innerHTML = `
+
+<h2 style="color:gold;">
+
+✨ Félicitations !
+
+</h2>
+
+<p>
+
+Tu as reconstitué la Clé du Destin.
+
+</p>
+
+<br>
+
+<p>
+
+❤️
+
+Le dernier coffre t'attend.
+
+Plus qu'un chapitre avant la grande surprise.
+
+</p>
+
+<br>
+
+<button onclick="nextChapter()">
+
+Continuer ➜
+
+</button>
+
+`;
+
+}else{
+
+document.getElementById("result").innerHTML = `
+
+<p style="color:#ff7070;">
+
+❌ Les fragments ne sont pas dans le bon ordre.
+
+</p>
+
+<br>
+
+<button onclick="restart()">
+
+Réessayer
+
+</button>
+
+`;
+
+}
+
+}
+
+function restart(){
+
+location.reload();
+
+}
+
+function nextChapter(){
+
+window.location.href = "chapitre9.html";
+
+}
+
+</script>
+
+</body>
+
+</html>

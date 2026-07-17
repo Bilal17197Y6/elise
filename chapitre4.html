@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Chapitre 4 - Memory</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+.memory{
+
+display:grid;
+grid-template-columns:repeat(4,100px);
+gap:15px;
+justify-content:center;
+margin-top:40px;
+
+}
+
+.card{
+
+width:100px;
+height:100px;
+
+background:#5b2c83;
+
+border-radius:15px;
+
+display:flex;
+
+justify-content:center;
+align-items:center;
+
+font-size:40px;
+
+cursor:pointer;
+
+transition:.3s;
+
+user-select:none;
+
+}
+
+.card:hover{
+
+transform:scale(1.08);
+
+}
+
+.found{
+
+background:gold;
+
+color:black;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<header>
+
+<h1>🧩 Chapitre 4</h1>
+
+<p class="subtitle">
+
+Le Memory des Souvenirs
+
+</p>
+
+</header>
+
+<section class="intro">
+
+<div class="story">
+
+<h2>Le Gardien du Temps</h2>
+
+<p>
+
+Les souvenirs ont été mélangés...
+
+Retrouve les 4 paires pour récupérer le quatrième fragment.
+
+</p>
+
+</div>
+
+</section>
+
+<div class="memory" id="memory"></div>
+
+<div id="message" style="text-align:center;margin-top:35px;"></div>
+
+<script>
+
+const symbols = [
+
+"📚","📚",
+"🍔","🍔",
+"🎬","🎬",
+"❤️","❤️"
+
+];
+
+// Mélange
+symbols.sort(() => Math.random() - 0.5);
+
+const board = document.getElementById("memory");
+
+let first = null;
+let second = null;
+let lock = false;
+let found = 0;
+
+// Création des cartes
+
+symbols.forEach(symbol => {
+
+const card = document.createElement("div");
+
+card.className = "card";
+
+card.dataset.value = symbol;
+
+card.innerHTML = "❓";
+
+card.onclick = () => flip(card);
+
+board.appendChild(card);
+
+});
+
+function flip(card){
+
+if(lock) return;
+
+if(card.innerHTML !== "❓") return;
+
+card.innerHTML = card.dataset.value;
+
+if(first === null){
+
+first = card;
+
+return;
+
+}
+
+second = card;
+
+lock = true;
+
+if(first.dataset.value === second.dataset.value){
+
+first.classList.add("found");
+second.classList.add("found");
+
+found++;
+
+first = null;
+second = null;
+
+lock = false;
+
+if(found === 4){
+
+document.getElementById("message").innerHTML = `
+
+<h2 style="color:gold;">
+
+✨ Bravo !
+
+</h2>
+
+<p>
+
+Tu as retrouvé le quatrième souvenir.
+
+</p>
+
+<br>
+
+<p>
+
+❤️
+
+Chaque paire représente un souvenir de votre histoire.
+
+</p>
+
+<br>
+
+<button onclick="nextChapter()">
+
+Continuer ➜
+
+</button>
+
+`;
+
+}
+
+}else{
+
+setTimeout(() => {
+
+first.innerHTML = "❓";
+second.innerHTML = "❓";
+
+first = null;
+second = null;
+
+lock = false;
+
+},1000);
+
+}
+
+}
+
+function nextChapter(){
+
+window.location.href = "chapitre5.html";
+
+}
+
+</script>
+
+</body>
+
+</html>

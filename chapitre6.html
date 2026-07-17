@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Chapitre 6 - La Salle du Gardien</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<header>
+
+<h1>🗝️ Chapitre 6</h1>
+
+<p class="subtitle">
+La Salle du Gardien
+</p>
+
+</header>
+
+<section class="intro">
+
+<div class="story">
+
+<h2>La porte verrouillée</h2>
+
+<p>
+
+Tu entres dans une ancienne salle.
+
+Une immense porte en pierre bloque le passage.
+
+Pour l'ouvrir, tu dois retrouver le code secret à 4 chiffres.
+
+Les indices sont cachés dans les souvenirs que tu as déjà retrouvés.
+
+</p>
+
+</div>
+
+</section>
+
+<section class="progress">
+
+<div class="story">
+
+<h2>Indices</h2>
+
+<p>📅 Une date importante contient le nombre <b>14</b>.</p>
+
+<p>⚡ Votre film préféré est <b>Harry Potter</b>.</p>
+
+<p>🍔 Votre restaurant préféré est <b>McDonald's</b>.</p>
+
+<p>🌳 Votre premier rendez-vous s'est déroulé dans un jardin.</p>
+
+<br>
+
+<h2>Quel est le code ?</h2>
+
+<input
+id="code"
+type="password"
+maxlength="4"
+placeholder="4 chiffres"
+style="width:220px;padding:15px;font-size:24px;text-align:center;border-radius:10px;border:none;">
+
+<br><br>
+
+<button onclick="checkCode()">
+
+Déverrouiller 🔓
+
+</button>
+
+<div id="result" style="margin-top:30px;"></div>
+
+</div>
+
+</section>
+
+<script>
+
+function checkCode(){
+
+    const code = document.getElementById("code").value;
+
+    if(code === "1425"){
+
+        document.getElementById("result").innerHTML = `
+
+        <h2 style="color:gold;">
+
+        ✨ Porte ouverte !
+
+        </h2>
+
+        <p>
+
+        Tu as retrouvé le sixième fragment.
+
+        </p>
+
+        <br>
+
+        <p>
+
+        ❤️
+
+        Aucun cadenas ne peut enfermer les souvenirs d'un véritable amour.
+
+        </p>
+
+        <br>
+
+        <button onclick="nextChapter()">
+
+        Continuer ➜
+
+        </button>
+
+        `;
+
+    }else{
+
+        document.getElementById("result").innerHTML = `
+
+        <p style="color:#ff7070;">
+
+        ❌ Mauvais code.
+
+        <br><br>
+
+        Indice :
+
+        Le code est composé de deux nombres importants de votre histoire.
+
+        </p>
+
+        `;
+
+    }
+
+}
+
+function nextChapter(){
+
+    window.location.href = "chapitre7.html";
+
+}
+
+</script>
+
+</body>
+
+</html>

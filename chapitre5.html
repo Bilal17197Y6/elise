@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Chapitre 5 - Le Message Secret</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<header>
+
+<h1>🔐 Chapitre 5</h1>
+
+<p class="subtitle">
+Le Message Secret
+</p>
+
+</header>
+
+<section class="intro">
+
+<div class="story">
+
+<h2>Le Gardien du Temps</h2>
+
+<p>
+
+Le Gardien du Temps a caché un message magique.
+
+Pour récupérer le cinquième fragment, tu dois retrouver la phrase originale.
+
+</p>
+
+<br>
+
+<h2 style="color:gold; text-align:center;">
+
+QSPUSF IJTUPJSF FTU NPO QMVT CFBV USFTPS
+
+</h2>
+
+<br>
+
+<p>
+
+<b>Indice :</b>
+
+Chaque lettre du message a été décalée d'une position dans l'alphabet.
+
+Exemple :
+
+A devient Z
+
+B devient A
+
+C devient B
+
+</p>
+
+</div>
+
+</section>
+
+<section class="progress">
+
+<div class="story">
+
+<h2>Quelle est la phrase ?</h2>
+
+<input
+id="answer"
+type="text"
+placeholder="Écris ta réponse ici..."
+style="width:100%;padding:15px;font-size:18px;border-radius:10px;border:none;">
+
+<br><br>
+
+<button onclick="checkAnswer()">
+
+Valider ✅
+
+</button>
+
+<div id="result" style="margin-top:30px;"></div>
+
+</div>
+
+</section>
+
+<script>
+
+function normalize(text){
+
+    return text
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g,"")
+    .trim();
+
+}
+
+function checkAnswer(){
+
+    const answer = normalize(document.getElementById("answer").value);
+
+    const solution = normalize("Notre histoire est mon plus beau trésor");
+
+    if(answer === solution){
+
+        document.getElementById("result").innerHTML = `
+
+        <h2 style="color:gold;">
+        ✨ Bravo !
+        </h2>
+
+        <p>
+        Tu as réussi à déchiffrer le message.
+        </p>
+
+        <br>
+
+        <p>
+
+        ❤️
+
+        Notre histoire est mon plus beau trésor.
+
+        </p>
+
+        <br>
+
+        <button onclick="nextChapter()">
+
+        Continuer ➜
+
+        </button>
+
+        `;
+
+    }else{
+
+        document.getElementById("result").innerHTML = `
+
+        <p style="color:#ff7070;">
+
+        ❌ Ce n'est pas la bonne phrase.
+
+        <br><br>
+
+        Indice :
+
+        Décale chaque lettre d'une place vers l'arrière.
+
+        </p>
+
+        `;
+
+    }
+
+}
+
+function nextChapter(){
+
+    window.location.href = "chapitre6.html";
+
+}
+
+</script>
+
+</body>
+
+</html>

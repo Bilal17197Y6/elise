@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Chapitre 2 - Le Banc des Souvenirs</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<header>
+
+<h1>🌳 Chapitre 2</h1>
+
+<p class="subtitle">
+
+Le Banc des Souvenirs
+
+</p>
+
+</header>
+
+<section class="intro">
+
+<div class="story">
+
+<h2>Un nouveau fragment...</h2>
+
+<p>
+
+Le Gardien du Temps protège encore un souvenir...
+
+<br><br>
+
+Tu arrives devant un vieux banc entouré d'arbres.
+
+Une voix résonne :
+
+<br><br>
+
+<i>
+
+"Où votre premier rendez-vous a-t-il eu lieu ?"
+
+</i>
+
+</p>
+
+</div>
+
+</section>
+
+<section class="progress">
+
+<div class="story">
+
+<h2>Deuxième énigme</h2>
+
+<h3>
+
+Où avons-nous eu notre premier rendez-vous ?
+
+</h3>
+
+<br>
+
+<button onclick="check('A')">
+🎬 Au cinéma
+</button>
+
+<br><br>
+
+<button onclick="check('B')">
+🌳 Sur un banc dans le jardin public
+</button>
+
+<br><br>
+
+<button onclick="check('C')">
+🍔 Chez McDonald's
+</button>
+
+<br><br>
+
+<button onclick="check('D')">
+🏖️ À la plage
+</button>
+
+<div id="result" style="margin-top:30px;"></div>
+
+</div>
+
+</section>
+
+<script>
+
+function check(choice){
+
+if(choice==="B"){
+
+document.getElementById("result").innerHTML=`
+
+<h2 style="color:gold;">
+
+✨ Bravo !
+
+</h2>
+
+<p>
+
+Tu as retrouvé le deuxième souvenir.
+
+</p>
+
+<br>
+
+<p>
+
+❤️
+
+Ce banc restera toujours un endroit spécial.
+
+C'est ici que notre histoire est devenue encore plus belle.
+
+</p>
+
+<br>
+
+<button onclick="nextChapter()">
+
+Continuer ➜
+
+</button>
+
+`;
+
+}else{
+
+document.getElementById("result").innerHTML=`
+
+<p style="color:#ff7070;">
+
+❌ Mauvaise réponse.
+
+<br><br>
+
+Indice :
+
+Nous étions entourés de nature. 🌳
+
+</p>
+
+`;
+
+}
+
+}
+
+function nextChapter(){
+
+window.location.href="chapitre3.html";
+
+}
+
+</script>
+
+</body>
+
+</html>

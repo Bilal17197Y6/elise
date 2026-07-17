@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Chapitre 3 - Le Premier Cinéma</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<header>
+
+<h1>🎬 Chapitre 3</h1>
+
+<p class="subtitle">
+Le Premier Cinéma
+</p>
+
+</header>
+
+<section class="intro">
+
+<div class="story">
+
+<h2>Le souvenir du grand écran</h2>
+
+<p>
+
+Le Gardien du Temps cache maintenant le souvenir de votre premier cinéma.
+
+<br><br>
+
+Une immense salle apparaît devant toi.
+
+L'écran s'allume...
+
+Plusieurs affiches défilent devant toi.
+
+<br><br>
+
+Une voix mystérieuse demande :
+
+<br><br>
+
+<i>
+
+"Quel film représente le mieux votre histoire ?"
+
+</i>
+
+</p>
+
+</div>
+
+</section>
+
+<section class="progress">
+
+<div class="story">
+
+<h2>Troisième énigme</h2>
+
+<p>
+
+Quel est notre film préféré ?
+
+</p>
+
+<br>
+
+<button onclick="checkAnswer('A')">
+🎬 Titanic
+</button>
+
+<br><br>
+
+<button onclick="checkAnswer('B')">
+⚡ Harry Potter
+</button>
+
+<br><br>
+
+<button onclick="checkAnswer('C')">
+🦁 Le Roi Lion
+</button>
+
+<br><br>
+
+<button onclick="checkAnswer('D')">
+🚀 Star Wars
+</button>
+
+<div id="result" style="margin-top:30px;"></div>
+
+</div>
+
+</section>
+
+<script>
+
+function checkAnswer(choice){
+
+    if(choice === "B"){
+
+        document.getElementById("result").innerHTML = `
+
+        <h2 style="color:gold;">
+
+        ✨ Bravo !
+
+        </h2>
+
+        <p>
+
+        Tu as retrouvé le troisième souvenir.
+
+        </p>
+
+        <br>
+
+        <p>
+
+        ❤️ Notre premier cinéma restera toujours gravé dans nos mémoires.
+
+        Harry Potter restera toujours un magnifique souvenir de notre histoire.
+
+        </p>
+
+        <br>
+
+        <button onclick="nextChapter()">
+
+        Continuer ➜
+
+        </button>
+
+        `;
+
+    }
+
+    else{
+
+        document.getElementById("result").innerHTML = `
+
+        <p style="color:#ff7070;">
+
+        ❌ Ce n'est pas le bon film.
+
+        <br><br>
+
+        Indice :
+
+        Le héros possède une cicatrice en forme d'éclair. ⚡
+
+        </p>
+
+        `;
+
+    }
+
+}
+
+function nextChapter(){
+
+    window.location.href = "chapitre4.html";
+
+}
+
+</script>
+
+</body>
+
+</html>

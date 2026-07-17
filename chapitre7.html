@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Chapitre 7 - Le Labyrinthe du Cœur</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+.labyrinth{
+
+text-align:center;
+
+margin:40px auto;
+
+max-width:700px;
+
+}
+
+.heart{
+
+font-size:80px;
+
+margin:20px 0;
+
+animation:beat 1.5s infinite;
+
+}
+
+@keyframes beat{
+
+0%,100%{
+
+transform:scale(1);
+
+}
+
+50%{
+
+transform:scale(1.15);
+
+}
+
+}
+
+.choice-btn{
+
+display:block;
+
+width:80%;
+
+max-width:400px;
+
+margin:12px auto;
+
+padding:18px;
+
+font-size:18px;
+
+background:rgba(255,255,255,.1);
+
+border:2px solid gold;
+
+border-radius:15px;
+
+color:white;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.choice-btn:hover{
+
+background:gold;
+
+color:black;
+
+transform:scale(1.05);
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<header>
+
+<h1>❤️ Chapitre 7</h1>
+
+<p class="subtitle">
+
+Le Labyrinthe du Cœur
+
+</p>
+
+</header>
+
+<section class="intro">
+
+<div class="story">
+
+<h2>Le Labyrinthe du Cœur</h2>
+
+<p>
+
+Le Gardien du Temps t'a enfermé dans un immense labyrinthe.
+
+<br><br>
+
+Seuls les bons choix te permettront d'atteindre le centre.
+
+</p>
+
+</div>
+
+</section>
+
+<div class="labyrinth">
+
+<div class="heart">
+
+❤️
+
+</div>
+
+<h3 id="question"></h3>
+
+<div id="choices"></div>
+
+<div id="result" style="margin-top:30px;"></div>
+
+</div>
+
+<script>
+
+let currentStep = 0;
+
+const steps = [
+
+{
+
+question:"Tu arrives devant trois chemins...",
+
+choices:[
+
+{text:"Le chemin des souvenirs heureux ❤️",correct:true},
+
+{text:"Le chemin du doute",correct:false},
+
+{text:"Le chemin de l'oubli",correct:false}
+
+]
+
+},
+
+{
+
+question:"Deux portes apparaissent...",
+
+choices:[
+
+{text:"La porte des sourires 😊",correct:true},
+
+{text:"La porte des mensonges",correct:false},
+
+{text:"La porte de la solitude",correct:false}
+
+]
+
+},
+
+{
+
+question:"Une douce odeur flotte dans l'air...",
+
+choices:[
+
+{text:"Je suis ton parfum ❤️",correct:true},
+
+{text:"Je pars ailleurs",correct:false},
+
+{text:"Je rebrousse chemin",correct:false}
+
+]
+
+},
+
+{
+
+question:"Tu aperçois enfin une lumière...",
+
+choices:[
+
+{text:"Je cours vers elle",correct:true},
+
+{text:"Je m'arrête",correct:false},
+
+{text:"Je ferme les yeux",correct:false}
+
+]
+
+}
+
+];
+
+function loadStep(){
+
+const question=document.getElementById("question");
+
+const choices=document.getElementById("choices");
+
+const result=document.getElementById("result");
+
+question.innerHTML=
+
+steps[currentStep].question+
+
+"<br><br><small>Étape "+(currentStep+1)+" / "+steps.length+"</small>";
+
+choices.innerHTML="";
+
+result.innerHTML="";
+
+steps[currentStep].choices.forEach(choice=>{
+
+const btn=document.createElement("button");
+
+btn.className="choice-btn";
+
+btn.innerHTML=choice.text;
+
+btn.onclick=()=>makeChoice(choice.correct);
+
+choices.appendChild(btn);
+
+});
+
+}
+
+function makeChoice(correct){
+
+const result=document.getElementById("result");
+
+if(correct){
+
+currentStep++;
+
+if(currentStep===steps.length){
+
+result.innerHTML=`
+
+<h2 style="color:gold;">
+
+✨ Bravo !
+
+</h2>
+
+<p>
+
+Tu as traversé le Labyrinthe du Cœur.
+
+</p>
+
+<br>
+
+<p>
+
+❤️
+
+Ton cœur a toujours trouvé le bon chemin.
+
+</p>
+
+<br>
+
+<button onclick="nextChapter()">
+
+Continuer ➜
+
+</button>
+
+`;
+
+document.getElementById("choices").innerHTML="";
+
+}else{
+
+result.innerHTML="<p style='color:lightgreen;'>✅ Tu avances...</p>";
+
+setTimeout(loadStep,1000);
+
+}
+
+}else{
+
+result.innerHTML=`
+
+<p style="color:#ff7070;">
+
+❌ Tu t'es perdu...
+
+</p>
+
+<br>
+
+<button onclick="restartLabyrinth()">
+
+Recommencer
+
+</button>
+
+`;
+
+}
+
+}
+
+function restartLabyrinth(){
+
+currentStep=0;
+
+loadStep();
+
+}
+
+function nextChapter(){
+
+window.location.href="chapitre8.html";
+
+}
+
+loadStep();
+
+</script>
+
+</body>
+
+</html>

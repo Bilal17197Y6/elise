@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Chapitre Final - Le Coffre du Destin</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+body{
+text-align:center;
+}
+
+#coffre{
+
+font-size:180px;
+
+cursor:pointer;
+
+transition:.5s;
+
+margin-top:40px;
+
+user-select:none;
+
+}
+
+#coffre:hover{
+
+transform:scale(1.08);
+
+}
+
+#message{
+
+display:none;
+
+margin-top:40px;
+
+animation:fade 1.5s;
+
+}
+
+@keyframes fade{
+
+from{
+
+opacity:0;
+transform:translateY(40px);
+
+}
+
+to{
+
+opacity:1;
+transform:translateY(0);
+
+}
+
+}
+
+.enveloppe{
+
+font-size:120px;
+
+margin:25px;
+
+}
+
+button{
+
+padding:15px 35px;
+
+font-size:18px;
+
+cursor:pointer;
+
+margin-top:20px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<header>
+
+<h1>🎁 Chapitre Final</h1>
+
+<p class="subtitle">
+
+Le Coffre du Destin
+
+</p>
+
+</header>
+
+<section class="intro">
+
+<div class="story">
+
+<h2>Le dernier souvenir</h2>
+
+<p>
+
+Tous les fragments sont enfin réunis.
+
+<br><br>
+
+Le Gardien du Temps disparaît dans une pluie d'étoiles.
+
+<br><br>
+
+Un immense coffre doré apparaît devant toi.
+
+<br><br>
+
+Clique dessus pour découvrir le véritable trésor.
+
+</p>
+
+</div>
+
+</section>
+
+<div id="coffre" onclick="ouvrir()">
+
+🔒
+
+</div>
+
+<div id="message">
+
+<div class="enveloppe">
+
+💌
+
+</div>
+
+<h2 style="color:gold;">
+
+Félicitations, mon cœur ❤️
+
+</h2>
+
+<br>
+
+<p style="font-size:20px;line-height:1.8;max-width:800px;margin:auto;">
+
+Tu as retrouvé tous les souvenirs de notre histoire.
+
+<br><br>
+
+Chaque énigme représentait un moment précieux.
+
+Chaque fragment racontait une partie de notre aventure.
+
+<br><br>
+
+Mais le plus beau cadeau ne pouvait pas être caché dans ce jeu...
+
+<br><br>
+
+💌
+
+Ta lettre est prête.
+
+<br>
+
+Elle t'attend sur mon bureau.
+
+<br><br>
+
+Elle arrive bientot .
+
+❤️
+
+</p>
+
+<button onclick="fin()">
+
+Terminer l'aventure
+
+</button>
+
+</div>
+
+<script>
+
+let ouvert = false;
+
+function ouvrir(){
+
+if(ouvert) return;
+
+ouvert = true;
+
+const coffre = document.getElementById("coffre");
+
+coffre.innerHTML = "📦";
+
+coffre.style.transform = "scale(1.2)";
+
+coffre.style.pointerEvents = "none";
+
+setTimeout(()=>{
+
+coffre.innerHTML = "🎁";
+
+document.getElementById("message").style.display = "block";
+
+},800);
+
+}
+
+function fin(){
+
+document.body.innerHTML = `
+
+<div style="
+
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+height:100vh;
+background:#090910;
+color:white;
+font-family:Poppins,sans-serif;
+padding:30px;
+text-align:center;
+
+">
+
+<h1 style="color:gold;font-size:55px;">
+
+❤️ Merci ❤️
+
+</h1>
+
+<br>
+
+<p style="font-size:24px;line-height:1.8;max-width:900px;">
+
+Merci d'avoir vécu cette aventure avec moi.
+
+<br><br>
+
+J'espère que chacun de ces souvenirs t'a fait sourire.
+
+<br><br>
+
+Je souris chaque fois que je pense à toi.
+
+<br><br>
+
+Je t'aime infiniment.
+
+❤️
+
+</p>
+
+</div>
+
+`;
+
+}
+
+</script>
+
+</body>
+
+</html>
